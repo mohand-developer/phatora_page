@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>محفور CNC - مولد الاعلانات</title>
+    <link rel="stylesheet" href="ad_generator.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cinzel:wght@400;700&family=Cairo:wght@400;700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+</head>
+
+<body>
+
+    <div class="app-container">
+        <!-- Sidebar Controls -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>إعدادات التصميم</h2>
+            </div>
+
+            <div class="control-group">
+                <label for="imageUpload" class="upload-btn">
+                    <i class="fas fa-cloud-upload-alt"></i> رفع صورة المنتج
+                </label>
+                <input type="file" id="imageUpload" accept="image/*" hidden>
+            </div>
+
+            <div class="control-group">
+                <label>حجم المنتج</label>
+                <input type="range" id="scaleControl" min="10" max="200" value="100">
+            </div>
+
+            <div class="control-group">
+                <label>موقع المنتج (عمودي)</label>
+                <input type="range" id="posYControl" min="-300" max="300" value="0">
+            </div>
+
+            <div class="control-group">
+                <label>موقع المنتج (أفقي)</label>
+                <input type="range" id="posXControl" min="-300" max="300" value="0">
+            </div>
+
+            <div class="control-group">
+                <button id="removeBgBtn" class="magic-btn" disabled>
+                    <i class="fas fa-wand-magic-sparkles"></i> حذف الخلفية (AI)
+                </button>
+            </div>
+
+            <div class="control-group">
+                <button id="downloadBtn" class="action-btn">
+                    <i class="fas fa-download"></i> تحميل التصميم
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Preview Area -->
+        <main class="preview-area">
+            <!-- Loader Overlay -->
+            <div id="loader" class="loader-overlay hidden">
+                <div class="spinner"></div>
+                <p>جاري حذف الخلفية بالذكاء الاصطناعي...<br><span style="font-size:0.8rem; opacity:0.7">(قد يستغرق الأمر
+                        ثوانٍ في المرة الأولى)</span></p>
+            </div>
+
+            <div id="adTemplate" class="ad-template">
+                <!-- Background & Decor -->
+                <div class="border-corner top-left"></div>
+                <div class="border-corner top-right"></div>
+                <div class="border-corner bottom-left"></div>
+                <div class="border-corner bottom-right"></div>
+
+                <div class="side-border left-border"></div>
+                <div class="side-border right-border"></div>
+
+                <!-- Branding -->
+                <div class="header-branding">
+                    <h1 class="brand-title">MAHFOOR <br> <span class="brand-sub">CNC</span></h1>
+                    <p class="brand-slogan">Nature Tells Your Story</p>
+                </div>
+
+                <!-- Features Left -->
+                <div class="features-list">
+                    <div class="feature-item">
+                        <div class="icon-box"><i class="fas fa-hand-holding-heart"></i></div>
+                        <span>صناعة يدوية فاخرة</span>
+                    </div>
+                    <div class="feature-item">
+                        <div class="icon-box"><i class="fas fa-leaf"></i></div>
+                        <span>خشب طبيعي 100%</span>
+                    </div>
+                    <div class="feature-item">
+                        <div class="icon-box"><i class="fas fa-drafting-compass"></i></div>
+                        <span>نقش دقيق بتقنية CNC</span>
+                    </div>
+                    <div class="feature-item">
+                        <div class="icon-box"><i class="fas fa-crown"></i></div>
+                        <span>منتج حصري ومميز</span>
+                    </div>
+                </div>
+
+                <!-- Product Placeholder -->
+                <div class="product-container">
+                    <img id="productImage" src="" class="product-img hidden" alt="Product">
+                    <div id="placeholderText" class="placeholder-text">ضع صورة المنتج هنا</div>
+                </div>
+
+                <!-- Footer -->
+                <div class="footer-branding">
+                    <div class="cta-button">اطلب الآن</div>
+                    <div class="contact-info">
+                        <i class="fab fa-whatsapp"></i> للتواصل عبر الواتساب: [0123445688]
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="ad_generator.js"></script>
+</body>
+
+</html>
